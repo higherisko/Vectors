@@ -1,9 +1,18 @@
 #include <iostream>
+#include <initializer_list>
 
 // Constructor
 template<typename T>
 myvector<T>::myvector() : capacity{1}, size{0} {
     arr = new T[capacity];
+}
+
+// Overloaded Constructor
+template<typename T>
+myvector<T>::myvector(std::initializer_list<T> init) : capacity{init.size()}, size{0} {
+    arr = new T[capacity];
+    for (; size<init.size(); size++)
+        arr[size] = init.begin()[size];
 }
 
 // Copy Constructor
@@ -85,8 +94,9 @@ void myvector<T>::pop_back() {
 
 template<typename T>
 T myvector<T>::at(const std::size_t index) {
-    if (index<=size-1)
+    if (index<size) {
         return arr[index];
+    }
 }
 
 template<typename T>

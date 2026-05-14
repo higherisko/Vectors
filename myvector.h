@@ -2,6 +2,7 @@
 #define MYVECTOR_H
 
 #include <iostream>
+#include <initializer_list>
 
 template<typename T>
 class myvector {
@@ -11,6 +12,7 @@ private:
     std::size_t size;
 public:
     myvector(); // Constructor
+    myvector(std::initializer_list<T> init); // Overloaded constructor
     myvector(const myvector &other); // Copy constructor
     myvector &operator=(const myvector &rhs); // Copy assignment
     myvector(myvector &&other); // Move construcor
